@@ -1,13 +1,13 @@
 "use strict";
 
 var config = {
-    //seleniumAddress: "http://localhost:9515",
     specs: [
         '../specs/*.spec.js'
     ],
     allScriptsTimeout: 60000,
+    //'phantomjs.binary.path': require('phantomjs').path,
     capabilities: {
-        'browserName': "chrome",
+        browserName: "chrome",
         version: '',
         platform: 'ANY'
     },
