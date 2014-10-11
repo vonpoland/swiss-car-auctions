@@ -6,9 +6,8 @@ var config = {
     ],
     allScriptsTimeout: 60000,
     capabilities: {
-        browserName: "chrome",
-        version: '',
-        platform: 'ANY'
+        browserName: "phantomjs",
+        'phantomjs.binary.path': require('phantomjs').path
     },
     params: {
         pages: [
