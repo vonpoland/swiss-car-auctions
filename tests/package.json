@@ -1,0 +1,7 @@
+{
+    "name": "swiss-cars-auctions",
+    "version": "0.0.1",
+    "dependencies": {
+        "astrolabe": "latest"
+    }
+}
