@@ -9,14 +9,6 @@ var config = {
         browserName: "phantomjs",
         'phantomjs.binary.path': require('phantomjs').path
     },
-    params: {
-        pages: [
-            {
-                name: "axa",
-                address: "http://axa.ricardo.ch/"
-            }
-        ]
-    },
     onPrepare: function () {
         browser.manage().window().maximize();
         browser.navigate("/");

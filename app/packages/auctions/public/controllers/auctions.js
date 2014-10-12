@@ -6,5 +6,7 @@ angular.module('mean.auctions').controller('AuctionsController', ['$scope', 'Glo
     $scope.package = {
       name: 'auctions'
     };
+
+    $scope.auctions = Auctions.query();
   }
 ]);

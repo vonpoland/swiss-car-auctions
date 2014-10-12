@@ -2,8 +2,8 @@
 
 angular.module('mean.auctions').config(['$stateProvider',
   function($stateProvider) {
-    $stateProvider.state('auctions example page', {
-      url: '/auctions/example',
+    $stateProvider.state('all auctions', {
+      url: '/auctions',
       templateUrl: 'auctions/views/index.html'
     });
   }

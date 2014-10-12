@@ -1,0 +1,7 @@
+validate:
+  address: "localhost"
+  port: 3000
+  path: "/auctions/check?token=12345"
+pages:
+  axa:
+    auctionAddress: http://axa.ricardo.ch/kaufen/auto/w/an:auctionId/

@@ -2,17 +2,15 @@
   <h1>List aukcji</h1>
   <h2>Package: {{package.name}}</h2>
   <ol>
-    <li>
-      <a href="auctions/example/anyone">Server route that anyone can access</a>
-    </li>
-    <li>
-      <a href="auctions/example/auth">Server route that requires authentication</a>
-    </li>
-    <li>
-      <a href="auctions/example/admin">Server route that requires admin user</a>
-    </li>
-    <li>
-      <a href="auctions/example/render">Raw Html rendering example from using swig</a>
+    <li  data-ng-repeat="auction in auctions">
+      <div>
+          {{ auction.start }}
+          {{ auction.end }}
+      </div>
+      <div>
+          {{ auction.car.brand }}
+          {{ auction.card.model }}
+      </div>
     </li>
   </ol>
   <h3><img src="/auctions/assets/img/logo.png" /></h3>

@@ -25,7 +25,7 @@ angular.module('mean.articles').config(['$stateProvider',
 
     // states for my app
     $stateProvider
-      .state('all articles', {
+      .state('all articles2', {
         url: '/articles',
         templateUrl: 'articles/views/list.html',
         resolve: {

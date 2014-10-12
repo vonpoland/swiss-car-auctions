@@ -115,8 +115,10 @@ module.exports = function(grunt) {
 
   //Default task(s).
   if (process.env.NODE_ENV === 'production') {
+    console.info('PRODUCTIOn');
     grunt.registerTask('default', ['clean', 'cssmin', 'uglify', 'concurrent']);
   } else {
+    console.info('DEVELOPMENT');
     grunt.registerTask('default', ['clean', 'jshint', 'csslint', 'concurrent']);
   }
 

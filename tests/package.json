@@ -3,6 +3,8 @@
     "version": "0.0.1",
     "dependencies": {
         "astrolabe": "latest",
-        "phantomjs": "latest"
+        "phantomjs": "latest",
+        "js-yaml": "latest",
+        "config": "latest"
     }
 }

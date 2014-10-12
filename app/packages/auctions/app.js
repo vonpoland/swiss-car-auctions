@@ -18,12 +18,12 @@ Auctions.register(function(app, auth, database) {
 
   //We are adding a link to the main menu for all authenticated users
   Auctions.menus.add({
-    title: 'auctions example page',
-    link: 'auctions example page',
-    roles: ['authenticated'],
-    menu: 'main'
+    'roles': ['authenticated'],
+    'title': 'Auctions',
+    'link': 'all auctions'
   });
-  
+
+
   Auctions.aggregateAsset('css', 'auctions.css');
 
   /**
