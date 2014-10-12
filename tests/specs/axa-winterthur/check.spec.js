@@ -1,10 +1,33 @@
 "use strict";
 
-var axaPage = require("../pages/axa-winterthur");
-var Watcher = require("../utils/watcher");
+var axaPage = require("../../pages/axa-winterthur");
+var Watcher = require("../../utils/watcher");
 var auctionLinks = [];
-var validate = require("../utils/validate");
+var Auction = require("../../utils/auction");
+var appProxy = require("../../utils/appProxy");
 var auctionsToFetch;
+var config = require("config");
+
+function toDate(value) {
+  var date = new Date();
+  var values = value.split(".");
+
+  date.setMonth(values[0]);
+  date.setYear(values[1]);
+  return date.toISOString();
+}
+
+function toId(url) {
+  url = url.split("/").filter(function (element) {
+    return element !== "";
+  });
+
+  return url[url.length - 1];
+}
+
+function toLinks(id) {
+  return config.pages.axa.auctionAddress.replace(":auctionId", id);
+}
 
 describe("Should go to auctions", function () {
   beforeEach(function () {
@@ -13,7 +36,6 @@ describe("Should go to auctions", function () {
 
   describe("Get all auctions and put into storage", function () {
     it("Iterate through all auctions ", function () {
-      return;
       axaPage.go();
 
       var finish = false;
@@ -53,14 +75,12 @@ describe("Should go to auctions", function () {
     });
 
     afterEach(function () {
-      auctionLinks = ["a", "b"];
-
-      validate.validateIds({
-        ids: auctionLinks,
+      appProxy.validateIds({
+        ids: auctionLinks.map(toId),
         type: "axa"
       }, function (result) {
-        auctionsToFetch = result;
-        console.info(auctionsToFetch);
+        auctionsToFetch = result.map(toLinks);
+        console.info("AUCTONS TO FETCH:", auctionsToFetch);
       });
 
       browser.wait(function () {
@@ -68,11 +88,4 @@ describe("Should go to auctions", function () {
       })
     })
   });
-
-  describe("fetch new auctions", function() {
-    it("Should iterate through new auctions and download it", function() {
-      var auctionId = auctionsToFetch.pop();
-      axaPage.goToAuction(auctionId);
-    })
-  })
 });

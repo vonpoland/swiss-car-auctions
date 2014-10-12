@@ -2,12 +2,13 @@
 
 var config = {
   specs: [
-    '../specs/**/*.spec.js'
+    '../specs/generated/*.spec-generated.js'
   ],
   allScriptsTimeout: 60000,
   capabilities: {
-    browserName: "phantomjs",
-    'phantomjs.binary.path': require('phantomjs').path
+    browserName: "chrome",
+    version: '',
+    platform: 'ANY'
   },
   onPrepare: function () {
     browser.navigate("/");

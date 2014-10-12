@@ -16,6 +16,11 @@ var AuctionSchema = new Schema({
     required: true,
     trim: true
   },
+  url: {
+    type: String,
+    required: true,
+    trim: true
+  },
   type: {
     type: String,
     required: true,
@@ -28,11 +33,6 @@ var AuctionSchema = new Schema({
   end: {
     type: Date,
     required: true
-  },
-  url: {
-    type: String,
-    required: true,
-    trim: true
   },
   car: {
     brand: {
@@ -99,9 +99,6 @@ AuctionSchema.path('end').validate(function (end) {
   return !!end;
 }, 'End cannot be blank');
 
-AuctionSchema.path('url').validate(function (url) {
-  return !!url;
-}, 'url cannot be blank');
 
 AuctionSchema.path('car.brand').validate(function(brand) {
   return !!brand;
