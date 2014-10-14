@@ -22,6 +22,10 @@ function toId(url) {
   return url[url.length - 1];
 }
 
+function toLink(id) {
+  return config.pages.axa.auctionAddress.replace(":auctionId", id);
+}
+
 describe("Should go to auctions", function () {
   beforeEach(function () {
     browser.ignoreSynchronization = true;
@@ -43,11 +47,9 @@ describe("Should go to auctions", function () {
     });
 
     it("Should iterate through new auctions and download it", function () {
-      console.info(process.argv);
       expect(process.argv.length).toBe(4);
-      var auctionToFetch = process.argv[3].replace("--", "");
-      console.info(auctionToFetch);
-
+      var auctionToFetch = toLink(process.argv[3].replace("--", ""));
+      console.info("DOWWWWWWWWWWWWWWWWWW", auctionToFetch);
       axaPage.goToAuction(auctionToFetch);
 
       auction.url = auctionToFetch;
@@ -67,8 +69,9 @@ describe("Should go to auctions", function () {
           if (invalidAuction) {
             return;
           }
-          appProxy.sendAuction(auction, function (err) {
-            expect(typeof(err.error)).toBe("undefined");
+          console.info("AAAAAAAAAAA", auction);
+          appProxy.sendAuction(auction, function (err, result) {
+            expect(typeof(result.error)).toBe("undefined");
             auction = null;
           });
         });

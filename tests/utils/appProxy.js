@@ -11,12 +11,15 @@ function handleResponse(response, callback) {
   });
 
   response.on('end', function () {
-    callback(JSON.parse(str));
+    callback(null, JSON.parse(str));
   });
 }
 
-function handleError(e) {
-  console.info('problem with request: ' + e.message);
+function handleError(callback) {
+    return function(e) {
+        console.info('problem with request: ' + e.message);
+        callback(e);
+    }
 }
 
 function sendRequest(data, options, callback) {
@@ -36,7 +39,7 @@ function sendRequest(data, options, callback) {
     handleResponse(response, callback);
   });
 
-  req.on('error', handleError);
+  req.on('error', handleError(callback));
   req.write(paramsString);
   req.end();
 }

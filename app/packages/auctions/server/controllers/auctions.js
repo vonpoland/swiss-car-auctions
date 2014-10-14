@@ -7,6 +7,7 @@ var httpStatus = require('http-status');
 var mongoose = require('mongoose');
 var Auction = mongoose.model('Auction');
 var _ = require('lodash');
+var auctionProxy = require('../services/auctionDownloadProxy');
 
 exports.update = function (req, res) {
   var auction = req.auction;
@@ -79,6 +80,7 @@ exports.checkIds = function (req, res) {
       return reduced;
     }, []);
 
+    auctionProxy.download(ids);
     res.json(ids);
   });
 };

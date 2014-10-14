@@ -2,7 +2,7 @@
 
 var config = {
   specs: [
-    '../specs/**/*.spec.js'
+    '../specs/**/check.spec.js'
   ],
   allScriptsTimeout: 60000,
   capabilities: {

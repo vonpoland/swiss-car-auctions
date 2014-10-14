@@ -2,7 +2,7 @@
 
 var config = {
   specs: [
-    '../specs/generated/*.spec-generated.js'
+    '../specs/axa-winterthur/fetchAuction.spec.js'
   ],
   allScriptsTimeout: 60000,
   capabilities: {

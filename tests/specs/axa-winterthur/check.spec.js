@@ -25,7 +25,7 @@ function toId(url) {
   return url[url.length - 1];
 }
 
-function toLinks(id) {
+function toLink(id) {
   return config.pages.axa.auctionAddress.replace(":auctionId", id);
 }
 
@@ -78,9 +78,15 @@ describe("Should go to auctions", function () {
       appProxy.validateIds({
         ids: auctionLinks.map(toId),
         type: "axa"
-      }, function (result) {
-        auctionsToFetch = result.map(toLinks);
-        console.info("AUCTONS TO FETCH:", auctionsToFetch);
+      }, function (err, result) {
+        console.info('AAAAAAAAAAAAAAA', err, result);
+        if(err) {
+          expect(err).toBe(null);
+          auctionsToFetch = "error";
+          return;
+        }
+
+        auctionsToFetch = result.map(toLink);
       });
 
       browser.wait(function () {
